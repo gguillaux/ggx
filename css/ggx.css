@@ -126,9 +126,9 @@ figcaption.img-caption {
     padding: 1.2em;
 }
 
-.grid .icons {
-    width: 3em;
-    height: 3em;
+.contact a {
     color: white;
-    align-content: center;
+    display: grid;
+    font-size: 3em;
+    justify-content: center;
 }
