@@ -130,4 +130,5 @@ figcaption.img-caption {
     width: 3em;
     height: 3em;
     color: white;
+    align-content: center;
 }
