@@ -93,6 +93,10 @@ a:hover {
     width: 100vw;
 }
 
+.grid {
+    gap: 3em;
+}
+
 .portfolio .grid {
     display: grid;
     justify-content: center;
@@ -120,4 +124,9 @@ a:hover {
 figcaption.img-caption {
     font-size: 1.5em;
     padding: 1.2em;
+}
+
+.grid .icons {
+    width: 3em;
+    height: 3em;
 }
