@@ -86,15 +86,16 @@ a:hover {
     font-style: italic;
 }
 
-.portfolio .grid {
-    height: 100vh;
-    display: grid;
-    justify-content: center;
+.page {
+    min-height: 100vh;
     color: white;
     font-weight: bold;
-    text-align: center;
     width: 100vw;
-    gap: 5vw;
+}
+
+.portfolio .grid {
+    display: grid;
+    justify-content: center;
 }
 
 @media (min-width: 40em) {
