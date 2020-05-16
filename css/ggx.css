@@ -38,8 +38,9 @@ header {
 .menu {
     background-color: rgb(2, 63, 99);
     position: fixed;
-    opacity: 0.65;
+    opacity: 0.85;
     width: 100vw;
+    height: 5vh;
     top: 0;
 }
 
@@ -126,9 +127,16 @@ figcaption.img-caption {
     padding: 1.2em;
 }
 
+.contact .icons {
+    text-align: center;
+}
+
 .contact a {
     color: white;
-    display: grid;
-    font-size: 3em;
+    font-size: 4.5em;
     justify-content: center;
+}
+
+.contact a:hover {
+    text-decoration: none;
 }
