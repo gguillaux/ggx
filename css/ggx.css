@@ -28,6 +28,9 @@ body {
     }
 }
 
+/*=============================================*/
+/* HEADER SETTINGS */
+
 header {
     height: 100vh;
     display: flex;
@@ -68,8 +71,8 @@ header {
     border-radius: 15%;
 }
 
-.site-title,
-.site-subtitle {
+header .site-title,
+header .site-subtitle {
     color: whitesmoke;
     text-align: center;
 }
@@ -80,9 +83,15 @@ header {
 }
 
 .site-subtitle {
-    font-size: 1.6em;
+    font-size: 1.8em;
     font-style: italic;
+    padding: 1.5em;
+    text-align: center;
 }
+
+/*=============================================*/
+/* PAGES SETTINGS */
+
 
 .page {
     min-height: 100vh;
@@ -94,6 +103,10 @@ header {
 .grid {
     gap: 3em;
 }
+
+/*=============================================*/
+/* PORTFOLIO SETTINGS */
+
 
 .portfolio .grid {
     display: grid;
@@ -124,9 +137,12 @@ figcaption.img-caption {
     padding: 1.2em;
 }
 
+/*=============================================*/
+/* CONTACT SETTINGS */
+
+
 .contact .icons {
     text-align: center;
-    justify-content: space-around;
 }
 
 .contact a {
