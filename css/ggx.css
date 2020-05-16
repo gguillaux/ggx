@@ -38,7 +38,7 @@ header {
 .menu {
     background-color: rgb(2, 63, 99);
     position: fixed;
-    opacity: 0.85;
+    opacity: 0.90;
     width: 100vw;
     height: 5vh;
     top: 0;
@@ -60,15 +60,12 @@ header {
     font-weight: bold;
     opacity: 1;
     padding: 15px 20px;
-}
-
-a {
-    color: teal;
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+.menu a:hover {
+    color: lightblue;
+    border-radius: 15%;
 }
 
 .site-title,
@@ -91,7 +88,7 @@ a:hover {
     min-height: 100vh;
     color: white;
     font-weight: bold;
-    width: 100vw;
+    min-width: 100vw;
 }
 
 .grid {
@@ -129,12 +126,12 @@ figcaption.img-caption {
 
 .contact .icons {
     text-align: center;
+    justify-content: space-around;
 }
 
 .contact a {
     color: white;
     font-size: 4.5em;
-    justify-content: center;
 }
 
 .contact a:hover {
