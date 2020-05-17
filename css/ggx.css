@@ -9,6 +9,7 @@
 body {
     background-image: url("../img/abstract2.gif");
     background-size: 100vw 100vh;
+    position: relative;
     font-family: 'Montserrat', sans-serif;
     font-size: 8px;
     height: 100vh;
@@ -40,6 +41,7 @@ header {
 
 .menu {
     background-color: rgb(2, 63, 99);
+    overflow: auto;
     position: fixed;
     width: 100vw;
     top: 0;
@@ -65,6 +67,7 @@ header {
 }
 
 .menu a:hover {
+    text-shadow: 0px 0px lightblue;
     color: lightblue;
     border-radius: 15%;
 }
@@ -136,7 +139,6 @@ header .site-subtitle {
     border-radius: 15%;
     display: block;
     height: 19em;
-    opacity: 0.8;
     width: 100%;
 }
 
@@ -164,4 +166,5 @@ figcaption.img-caption {
 
 .contact a:hover {
     text-decoration: none;
+    text-shadow: 0px 0px 10px #ffffff;
 }
