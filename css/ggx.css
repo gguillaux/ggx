@@ -64,10 +64,19 @@ header {
     opacity: 1;
     padding: 15px 20px;
     text-decoration: none;
+    transition: all 800ms ease;
 }
 
 .menu a:hover {
     color: lightblue;
+    animation: change_menu_item_background 900ms infinite;
+}
+
+@keyframes change_menu_item_background {
+    0% {background-color: rgb(2, 63, 99);}
+    33% {background-color: #1e4e7e;}
+    66% {background-color: #2b4e70;}
+    100% {background-color: rgb(2, 63, 99);}
 }
 
 header .site-title,
@@ -168,7 +177,8 @@ figcaption.img-caption {
 
 .contact a {
     color: white;
-    font-size: 4.5em;
+    font-size: 4.8em;
+    padding: 0.3em;
 }
 
 .contact a:hover {
