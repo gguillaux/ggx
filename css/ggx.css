@@ -16,7 +16,7 @@ body {
 }
 
 /* FOR MEDIUM WINDOWS */
-@media (min-width: 400px) {
+@media (min-width: 580px) {
     body {
         font-size: 14px;
     }
@@ -124,11 +124,18 @@ header .site-subtitle {
     display: grid;
     justify-content: center;
     align-content: center;
+    grid-template-columns: 80vw;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 45em) {
     .portfolio .grid {
         grid-template-columns: repeat(2, 40vw);
+    }
+}
+
+@media (min-width: 100em) {
+    .portfolio .grid {
+        grid-template-columns: repeat(4, 20vw);
     }
 }
 
