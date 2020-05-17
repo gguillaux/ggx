@@ -41,7 +41,6 @@ header {
 .menu {
     background-color: rgb(2, 63, 99);
     position: fixed;
-    opacity: 0.93;
     width: 100vw;
     top: 0;
 }
