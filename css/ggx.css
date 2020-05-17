@@ -144,6 +144,8 @@ header .site-subtitle {
     border-radius: 15%;
     display: block;
     height: 19em;
+    object-fit: cover;
+    object-position: bottom;
     width: 100%;
 }
 
