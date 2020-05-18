@@ -173,8 +173,15 @@ figcaption.img-caption {
 /*=============================================*/
 /* CONTACT SETTINGS */
 .certifications .img-cert img {
-    width: 5em;
-    height: 5em;
+    width: 5.6em;
+    height: 5.6em;
+}
+
+.certifications .img-cert {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(3, 20vw);
 }
 
 
