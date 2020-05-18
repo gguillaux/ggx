@@ -156,7 +156,7 @@ header .site-subtitle {
     display: block;
     height: 19em;
     object-fit: cover;
-    object-position: bottom;
+    object-position: top;
     width: 100%;
 }
 
