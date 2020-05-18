@@ -55,6 +55,8 @@ header {
 .menu li {
     list-style: none;
     font-size: 1.5em;
+    width: 25%;
+    text-align: center;
 }
 
 .menu a {
