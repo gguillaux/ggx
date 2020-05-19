@@ -5,6 +5,9 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background-image: url("../img/abstract2.gif");
