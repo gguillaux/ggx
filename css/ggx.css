@@ -161,10 +161,12 @@ header .site-subtitle {
     object-fit: cover;
     object-position: center;
     width: 100%;
+    transition: transform .3s;
 }
 
 .portfolio .img-portfolio:hover {
     border: solid 0.3em lightblue;
+    transform: scale(1.05);
 }
 
 figcaption.img-caption {
@@ -187,6 +189,14 @@ figcaption.img-caption {
     grid-template-columns: repeat(3, 20vw);
 }
 
+.certifications figure {
+    transition: transform .15s;
+}
+
+.certifications figure:hover {
+    transform: scale(1.15);
+}
+
 
 /*=============================================*/
 /* CONTACT SETTINGS */
@@ -205,4 +215,12 @@ figcaption.img-caption {
 .contact a:hover {
     text-decoration: none;
     text-shadow: 0px 0px 10px #ffffff;
+}
+
+.contact i {
+    transition: transform .15s;
+}
+
+.contact i:hover {
+    transform: scale(1.15);
 }
