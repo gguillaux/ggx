@@ -544,9 +544,55 @@
         .scroll-to-top:hover {
             transform: translateY(-5px);
         }
+
+        .language-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: rgba(30, 30, 35, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+            padding: 10px;
+            backdrop-filter: blur(20px);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #d4d4d8;
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .lang-btn:hover {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            border-color: transparent;
+            color: white;
+        }
     </style>
 </head>
 <body>
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="changeLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="changeLanguage('pt')">PT</button>
+        <button class="lang-btn" onclick="changeLanguage('es')">ES</button>
+        <button class="lang-btn" onclick="changeLanguage('fr')">FR</button>
+        <button class="lang-btn" onclick="changeLanguage('zh')">中文</button>
+    </div>
+
     <div class="particles" id="particles"></div>
 
     <div class="container">
@@ -807,14 +853,201 @@
     </div>
 
     <script>
+        // Translations
+        const translations = {
+            en: {
+                roles: [
+                    "Engineering Manager at XP Inc.",
+                    "Algorithmic Trading Specialist",
+                    "Team Leader of 18 Engineers",
+                    "AI & Machine Learning Enthusiast",
+                    "Philosophy & Tech Lover"
+                ],
+                motto: "Sapere aude! — Dare to know",
+                aboutTitle: "About Me",
+                aboutText1: "Experienced technologist specializing in <strong>algorithmic trading</strong> and <strong>electronic trading systems</strong> with over 10 years in the financial industry. Currently leading a team of <strong>18 engineers</strong> at XP Inc., managing the production environment and Run The Bank operations for the XP Core Platform.",
+                aboutText2: "My unique background combines expertise in high-frequency trading systems with a foundation in philosophy and journalism. This diverse experience allows me to approach complex technical challenges with creativity, critical thinking, and exceptional documentation skills.",
+                aboutText3: "Passionate about technology, AI/ML, and continuous learning. I hold an <strong>MBA in Artificial Intelligence and Machine Learning</strong> from FIAP and have completed specialized training in algorithmic trading and data analytics.",
+                achievementsTitle: "Key Achievements",
+                achievement1: "Incident Reduction at J.P. Morgan",
+                achievement2: "Servers Migrated CentOS → RHEL",
+                achievement3: "Applications Managed",
+                achievement4: "Engineers Leading",
+                achievement5: "Interns Hired Full-Time",
+                achievement6: "Years in FinTech",
+                skillsTitle: "Core Skills",
+                experienceTitle: "Experience",
+                educationTitle: "Education",
+                languagesTitle: "Languages",
+                connectTitle: "Connect With Me",
+                connectSubtitle: "Scan to view my LinkedIn profile",
+                connectOr: "Or visit:"
+            },
+            pt: {
+                roles: [
+                    "Gerente de Engenharia na XP Inc.",
+                    "Especialista em Trading Algorítmico",
+                    "Líder de Equipe de 18 Engenheiros",
+                    "Entusiasta de IA & Machine Learning",
+                    "Amante de Filosofia & Tecnologia"
+                ],
+                motto: "Sapere aude! — Ouse saber",
+                aboutTitle: "Sobre Mim",
+                aboutText1: "Tecnólogo experiente especializado em <strong>trading algorítmico</strong> e <strong>sistemas de negociação eletrônica</strong> com mais de 10 anos na indústria financeira. Atualmente liderando uma equipe de <strong>18 engenheiros</strong> na XP Inc., gerenciando o ambiente de produção e operações Run The Bank da Plataforma XP Core.",
+                aboutText2: "Minha formação única combina expertise em sistemas de negociação de alta frequência com base em filosofia e jornalismo. Esta experiência diversa me permite abordar desafios técnicos complexos com criatividade, pensamento crítico e habilidades excepcionais de documentação.",
+                aboutText3: "Apaixonado por tecnologia, IA/ML e aprendizado contínuo. Possuo <strong>MBA em Inteligência Artificial e Machine Learning</strong> pela FIAP e completei treinamentos especializados em trading algorítmico e análise de dados.",
+                achievementsTitle: "Principais Conquistas",
+                achievement1: "Redução de Incidentes no J.P. Morgan",
+                achievement2: "Servidores Migrados CentOS → RHEL",
+                achievement3: "Aplicações Gerenciadas",
+                achievement4: "Engenheiros Liderando",
+                achievement5: "Estagiários Contratados",
+                achievement6: "Anos em FinTech",
+                skillsTitle: "Habilidades Principais",
+                experienceTitle: "Experiência",
+                educationTitle: "Educação",
+                languagesTitle: "Idiomas",
+                connectTitle: "Conecte-se Comigo",
+                connectSubtitle: "Escaneie para ver meu perfil no LinkedIn",
+                connectOr: "Ou visite:"
+            },
+            es: {
+                roles: [
+                    "Gerente de Ingeniería en XP Inc.",
+                    "Especialista en Trading Algorítmico",
+                    "Líder de Equipo de 18 Ingenieros",
+                    "Entusiasta de IA & Machine Learning",
+                    "Amante de Filosofía & Tecnología"
+                ],
+                motto: "Sapere aude! — Atrévete a saber",
+                aboutTitle: "Sobre Mí",
+                aboutText1: "Tecnólogo experimentado especializado en <strong>trading algorítmico</strong> y <strong>sistemas de negociación electrónica</strong> con más de 10 años en la industria financiera. Actualmente liderando un equipo de <strong>18 ingenieros</strong> en XP Inc., gestionando el ambiente de producción y operaciones Run The Bank de la Plataforma XP Core.",
+                aboutText2: "Mi formación única combina experiencia en sistemas de negociación de alta frecuencia con fundamentos en filosofía y periodismo. Esta experiencia diversa me permite abordar desafíos técnicos complejos con creatividad, pensamiento crítico y habilidades excepcionales de documentación.",
+                aboutText3: "Apasionado por la tecnología, IA/ML y aprendizaje continuo. Poseo un <strong>MBA en Inteligencia Artificial y Machine Learning</strong> de FIAP y he completado entrenamientos especializados en trading algorítmico y análisis de datos.",
+                achievementsTitle: "Logros Clave",
+                achievement1: "Reducción de Incidentes en J.P. Morgan",
+                achievement2: "Servidores Migrados CentOS → RHEL",
+                achievement3: "Aplicaciones Gestionadas",
+                achievement4: "Ingenieros Liderando",
+                achievement5: "Pasantes Contratados",
+                achievement6: "Años en FinTech",
+                skillsTitle: "Habilidades Principales",
+                experienceTitle: "Experiencia",
+                educationTitle: "Educación",
+                languagesTitle: "Idiomas",
+                connectTitle: "Conéctate Conmigo",
+                connectSubtitle: "Escanea para ver mi perfil de LinkedIn",
+                connectOr: "O visita:"
+            },
+            fr: {
+                roles: [
+                    "Responsable Ingénierie chez XP Inc.",
+                    "Spécialiste du Trading Algorithmique",
+                    "Chef d'Équipe de 18 Ingénieurs",
+                    "Passionné d'IA & Machine Learning",
+                    "Amateur de Philosophie & Technologie"
+                ],
+                motto: "Sapere aude! — Ose savoir",
+                aboutTitle: "À Propos",
+                aboutText1: "Technologue expérimenté spécialisé dans le <strong>trading algorithmique</strong> et les <strong>systèmes de négociation électronique</strong> avec plus de 10 ans dans l'industrie financière. Actuellement à la tête d'une équipe de <strong>18 ingénieurs</strong> chez XP Inc., gérant l'environnement de production et les opérations Run The Bank de la plateforme XP Core.",
+                aboutText2: "Mon parcours unique combine une expertise en systèmes de trading haute fréquence avec des fondements en philosophie et journalisme. Cette expérience diversifiée me permet d'aborder des défis techniques complexes avec créativité, pensée critique et compétences exceptionnelles en documentation.",
+                aboutText3: "Passionné par la technologie, l'IA/ML et l'apprentissage continu. Je détiens un <strong>MBA en Intelligence Artificielle et Machine Learning</strong> de FIAP et j'ai complété des formations spécialisées en trading algorithmique et analyse de données.",
+                achievementsTitle: "Réalisations Clés",
+                achievement1: "Réduction d'Incidents chez J.P. Morgan",
+                achievement2: "Serveurs Migrés CentOS → RHEL",
+                achievement3: "Applications Gérées",
+                achievement4: "Ingénieurs Dirigés",
+                achievement5: "Stagiaires Embauchés",
+                achievement6: "Années en FinTech",
+                skillsTitle: "Compétences Principales",
+                experienceTitle: "Expérience",
+                educationTitle: "Éducation",
+                languagesTitle: "Langues",
+                connectTitle: "Connectez-vous",
+                connectSubtitle: "Scannez pour voir mon profil LinkedIn",
+                connectOr: "Ou visitez:"
+            },
+            zh: {
+                roles: [
+                    "XP Inc. 工程经理",
+                    "算法交易专家",
+                    "18名工程师团队负责人",
+                    "人工智能与机器学习爱好者",
+                    "哲学与技术爱好者"
+                ],
+                motto: "Sapere aude! — 勇于求知",
+                aboutTitle: "关于我",
+                aboutText1: "经验丰富的技术专家，专注于<strong>算法交易</strong>和<strong>电子交易系统</strong>，在金融行业拥有超过10年的经验。目前在XP Inc.领导一支<strong>18名工程师</strong>的团队，管理XP核心平台的生产环境和Run The Bank运营。",
+                aboutText2: "我独特的背景结合了高频交易系统的专业知识以及哲学和新闻学的基础。这种多样化的经验使我能够以创造力、批判性思维和卓越的文档技能应对复杂的技术挑战。",
+                aboutText3: "热衷于技术、人工智能/机器学习和持续学习。我拥有FIAP的<strong>人工智能和机器学习MBA学位</strong>，并完成了算法交易和数据分析的专业培训。",
+                achievementsTitle: "主要成就",
+                achievement1: "摩根大通事故减少",
+                achievement2: "服务器迁移 CentOS → RHEL",
+                achievement3: "管理的应用程序",
+                achievement4: "领导的工程师",
+                achievement5: "实习生全职录用",
+                achievement6: "金融科技年限",
+                skillsTitle: "核心技能",
+                experienceTitle: "工作经验",
+                educationTitle: "教育背景",
+                languagesTitle: "语言能力",
+                connectTitle: "与我联系",
+                connectSubtitle: "扫描查看我的LinkedIn个人资料",
+                connectOr: "或访问："
+            }
+        };
+
+        let currentLang = 'en';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content
+            const t = translations[lang];
+            
+            // Update typing effect
+            texts = t.roles;
+            textIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
+            
+            // Update static content
+            document.querySelector('.motto').textContent = t.motto;
+            document.querySelectorAll('.section-title')[0].textContent = t.aboutTitle;
+            
+            const aboutTexts = document.querySelectorAll('.about-text p');
+            aboutTexts[0].innerHTML = t.aboutText1;
+            aboutTexts[1].innerHTML = t.aboutText2;
+            aboutTexts[2].innerHTML = t.aboutText3;
+            
+            document.querySelectorAll('.section-title')[1].textContent = t.achievementsTitle;
+            
+            const achievementTexts = document.querySelectorAll('.achievement-text');
+            achievementTexts[0].textContent = t.achievement1;
+            achievementTexts[1].textContent = t.achievement2;
+            achievementTexts[2].textContent = t.achievement3;
+            achievementTexts[3].textContent = t.achievement4;
+            achievementTexts[4].textContent = t.achievement5;
+            achievementTexts[5].textContent = t.achievement6;
+            
+            document.querySelectorAll('.section-title')[2].textContent = t.skillsTitle;
+            document.querySelectorAll('.section-title')[3].textContent = t.experienceTitle;
+            document.querySelectorAll('.section-title')[4].textContent = t.educationTitle;
+            document.querySelectorAll('.section-title')[5].textContent = t.languagesTitle;
+            document.querySelectorAll('.section-title')[6].textContent = t.connectTitle;
+            
+            document.querySelector('.qr-section h3').textContent = t.connectSubtitle;
+            document.querySelector('.qr-section p').innerHTML = t.connectOr + ' <a href="https://www.linkedin.com/in/gguillaux" target="_blank" style="color: #8b5cf6; font-weight: bold; text-decoration: none;">linkedin.com/in/gguillaux</a>';
+        }
+
         // Typing effect
-        const texts = [
-            "Engineering Manager at XP Inc.",
-            "Algorithmic Trading Specialist",
-            "Team Leader of 18 Engineers",
-            "AI & Machine Learning Enthusiast",
-            "Philosophy & Tech Lover"
-        ];
+        let texts = translations.en.roles;
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
